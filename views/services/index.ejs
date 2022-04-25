@@ -1,0 +1,24 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <div class="col-6 offset-3">
+    <h1 class="display-6 text-center">Services</h1>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam illo
+      laborum, modi voluptates repellendus asperiores eos expedita beatae odit.
+      Soluta magni amet expedita omnis, eaque aspernatur facilis aperiam saepe
+      molestias.
+    </p>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <% for(let service of services){ %>
+  <div class="col-md-4 text-center">
+    <h3><%= service.name %></h3>
+    <p><%= service.description %></p>
+
+    <a class="btn btn-primary" href="/services/<%=service.id%>">get service</a>
+  </div>
+  <%} %>
+</div>

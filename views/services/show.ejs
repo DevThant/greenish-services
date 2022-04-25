@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <div class="col-6 offset-3 text-center">
+    <h1 class="display-6"><%= service.name %></h1>
+    <p><%= service.description %></p>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <% for(let variant of services) {%>
+  <div class="col-md-5 col-lg-4">
+    <div class="card">
+      <div class="card-title"><h3><%= variant.dvName %></h3></div>
+      <div class="card-body">
+        <div class="card-text"><p><%= variant.dvDescription %></p></div>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= variant.dvModel %></li>
+        <% if(variant.dvBrand && variant.dvHp) {%>
+        <li class="list-group-item"><%= variant.dvBrand %></li>
+        <li class="list-group-item"><%= variant.dvHp %></li>
+        <% } %>
+        <li class="list-group-item"><%= variant.dvPrice %></li>
+      </ul>
+      <p class="card-text">
+        <small class="text-muted"><p><%= variant.subscription %></p></small>
+      </p>
+      <a href="" class="btn btn-primary">Request</a>
+    </div>
+  </div>
+  <% } %>
+</div>

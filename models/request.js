@@ -9,6 +9,29 @@ const serviceSchema = new mongoose.Schema({
       vname: String,
       vprice: Number,
       vdescription: String,
+      model: String,
+      brand: String,
+      hp: {
+        type: Number,
+        min: 0,
+      },
+    },
+  ],
+  defaultVariants: [
+    {
+      dvName: String,
+      dvPrice: Number,
+      dvDescription: String,
+      dvModel: String,
+      dvBrand: String,
+      dvHp: {
+        type: Number,
+        min: 0,
+      },
+      subscription: {
+        type: String,
+        default: "one-time",
+      },
     },
   ],
 });
@@ -20,10 +43,6 @@ const requestSchema = new mongoose.Schema({
   service: {
     name: {
       type: String,
-<<<<<<< HEAD
-      enum: ["s1", "s2", "s3", "s4", "s5"],
-    },
-=======
       required: true,
     },
     vname: {
@@ -49,6 +68,10 @@ const requestSchema = new mongoose.Schema({
       min: 0,
     },
   },
+  subscription: {
+    type: String,
+    default: "one-time",
+  },
   description: String,
   note: String,
   cost: Number,
@@ -56,7 +79,6 @@ const requestSchema = new mongoose.Schema({
   confirm: {
     type: Boolean,
     default: false,
->>>>>>> baa090ca8634141ede8b2c12f530ddcedd3e985d
   },
 });
 
