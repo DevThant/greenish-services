@@ -108,3 +108,5 @@ This app provides users with the services of Greenish Engineering Co., Ltd.
   }
 ]
 ```
+
+[Horse Power Calculator](https://www.airconditioning-systems.com/air-conditioning-calculations.html#:~:text=When%20choosing%20an%20air%20conditioner,the%20greater%20the%20cooling%20capacity.)
