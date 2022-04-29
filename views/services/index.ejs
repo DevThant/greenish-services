@@ -9,6 +9,7 @@
       Soluta magni amet expedita omnis, eaque aspernatur facilis aperiam saepe
       molestias.
     </p>
+    <p>Category : <%= category %></p>
   </div>
 </div>
 
@@ -17,8 +18,12 @@
   <div class="col-md-4 text-center">
     <h3><%= service.name %></h3>
     <p><%= service.description %></p>
+    <p><%= service.category %></p>
 
-    <a class="btn btn-primary" href="/services/<%=service.id%>">get service</a>
+    <a class="btn btn-primary" href="/services/<%=service.id%>">Show Details</a>
+    <a class="btn btn-primary" href="/services/<%=service.id%>/choices"
+      >Get Service</a
+    >
   </div>
   <%} %>
 </div>

@@ -1,40 +1,5 @@
 const mongoose = require("mongoose");
 
-const serviceSchema = new mongoose.Schema({
-  name: String,
-  price: Number,
-  description: String,
-  variants: [
-    {
-      vname: String,
-      vprice: Number,
-      vdescription: String,
-      model: String,
-      brand: String,
-      hp: {
-        type: Number,
-        min: 0,
-      },
-    },
-  ],
-  defaultVariants: [
-    {
-      dvName: String,
-      dvPrice: Number,
-      dvDescription: String,
-      dvModel: String,
-      dvBrand: String,
-      dvHp: {
-        type: Number,
-        min: 0,
-      },
-      subscription: {
-        type: String,
-        default: "one-time",
-      },
-    },
-  ],
-});
 const requestSchema = new mongoose.Schema({
   name: String,
   email: String,
@@ -82,7 +47,6 @@ const requestSchema = new mongoose.Schema({
   },
 });
 
-module.exports.Service = mongoose.model("Service", serviceSchema);
 module.exports.Request = mongoose.model("Request", requestSchema);
 // module.exports = mongoose.model("Request", requestSchema);
 // const Request = mongoose.model("Request", requestSchema);

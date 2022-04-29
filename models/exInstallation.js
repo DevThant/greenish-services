@@ -35,7 +35,7 @@ const exInstallationSchema = new Schema({
 });
 const ExInstallation = mongoose.model("ExInstallation", exInstallationSchema);
 
-module.exports = Choice;
+module.exports = ExInstallation;
 // choice: {
 //     name: "Regular Cleaning",
 //     description: "Cleaning any types of ac using standard equiments in minimal time.",

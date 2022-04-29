@@ -1,0 +1,9 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<h1>Choices</h1>
+
+<% if(service.category === "hvac") {%>
+<a href="/services/<%= service.id %>/installations">
+  I'd like to choose the AC myself.
+</a>
+<% } %>
