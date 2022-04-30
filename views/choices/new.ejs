@@ -1,0 +1,100 @@
+<% layout("layouts/boilerplate") %>
+<div class="row">
+  <h1 class="text-center">Create New Default Plan for <%= service.name %></h1>
+  <div class="col-6 offset-3">
+    <form
+      action="/choices"
+      method="post"
+      class="g-3 needs-validation"
+      novalidate
+    >
+      <div class="mb-3">
+        <label for="name" class="form-label">Plan Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="choice[name]"
+          required
+        />
+        <div class="invalid-feedback">Please provide a name for the plan.</div>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Base Price:</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="price">MMK</span>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            name="choice[price]"
+            required
+          />
+          <div class="invalid-feedback">Please state the price.</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">choice Description</label>
+        <textarea
+          class="form-control"
+          name="choice[description]"
+          id="description"
+          cols="10"
+          rows="3"
+          required
+        ></textarea>
+        <div class="invalid-feedback">
+          Please provide a description of the plan.
+        </div>
+        <div class="valid-feedback">&orarr;</div>
+      </div>
+      <div class="mb-3">
+        <label for="plan" class="form-label">Choose Plan Subscription</label>
+        <select class="form-select" name="choice[plan]" id="plan">
+          <% for (let c of catPlan) {%>
+          <option value="<%= c %>"><%= c %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="type" class="form-label">Choose Plan Type</label>
+        <select class="form-select" name="choice[type]" id="type">
+          <% for (let c of catType) {%>
+          <option value="<%= c %>"><%= c %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Brand Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="choice[name]"
+          required
+        />
+        <div class="invalid-feedback">Please provide brand name for the AC</div>
+      </div>
+      <div class="mb-3">
+        <label for="model" class="form-label">Choose AC Model</label>
+        <select class="form-select" name="choice[model]" id="model">
+          <% for (let c of catModel) {%>
+          <option value="<%= c %>"><%= c %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="hp" class="form-label">Choose Ac Hp </label>
+        <select class="form-select" name="choice[hp]" id="hp">
+          <% for (let c of catHp) {%>
+          <option value="<%= c %>"><%= c %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success" type="submit">Create choice</button>
+      </div>
+    </form>
+    <a class="btn btn-primary" href="/choices">Cancel</a>
+  </div>
+</div>

@@ -61,6 +61,14 @@
         </select>
       </div>
       <div class="mb-3">
+        <label for="method" class="form-label">Choose Service Method</label>
+        <select class="form-select" name="service[method]" id="method">
+          <% for (let c of methods) {%>
+          <option value="<%= c %>"><%= c %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
         <button class="btn btn-success" type="submit">Create Service</button>
       </div>
     </form>
