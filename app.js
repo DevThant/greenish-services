@@ -147,14 +147,7 @@ app.post("/services/:id/installations", async (req, res) => {
   res.redirect(`/services/${service.id}`);
 });
 
-function add(option){
-  const option = new ExInstallation({ ...req.body.option });
-  service.exInstallations.push(option);
-  option.service = service;
-  await service.save();
-  await option.save();
-  res.redirect(`/services/${service.id}`);
-}
+
 // // Create Default Service Options
 // app.get("/services/:id/new_d_varaint", async (req, res) => {
 //   const service = await Service.findById(req.params.id);
