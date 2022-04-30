@@ -22,6 +22,10 @@ const serviceSchema = new Schema({
     enum: ["hvac", "solar", "electrical", "plumbing", "grounding"],
     required: true,
   },
+  method: {
+    type: String,
+    enum: ["ac installations", "ac cleaning"],
+  },
   choices: [
     {
       type: Schema.Types.ObjectId,

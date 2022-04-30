@@ -33,9 +33,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 
-// Service Categories (Put this in edit form route)
+// Categories
 const categories = ["hvac", "solar", "electrical", "plumbing", "grounding"];
-
+const catPlan = ["One-Time", "Monthly", "3 Months", "6 Months", "Yearly"];
+const catType = ["Regular", "Premium"];
+const catModel = ["Inverter", "Non-Inverter"];
+const catHp = [1, 1.5, 2, 2.5, 3, 3.5];
+const methods = ["ac installation", "ac cleaning"];
 // Routes
 app.get("/", (req, res) => {
   res.render("index");
@@ -60,7 +64,7 @@ app.get("/services", async (req, res) => {
 
 // Create Main Services (!! Not Accessible to Users)
 app.get("/services/new", (req, res) => {
-  res.render("services/new", { categories });
+  res.render("services/new", { categories, methods });
 });
 // Create Service (!! Not Accessible to Users)
 app.post("/services", async (req, res) => {
@@ -78,7 +82,7 @@ app.get("/services/:id", async (req, res) => {
 app.get("/services/:id/edit", async (req, res) => {
   const { id } = req.params;
   const service = await Service.findById(id);
-  res.render("services/edit", { service, categories });
+  res.render("services/edit", { service, categories, methods });
 });
 
 app.put("/services/:id", async (req, res) => {
@@ -117,7 +121,7 @@ app.get("/services/:id/installations", async (req, res) => {
 
 app.get("/services/:id/choices/new", async (req, res) => {
   const service = await Service.findById(req.params.id);
-  res.render("choices/new", { service });
+  res.render("choices/new", { service, catPlan, catType, catModel, catHp });
 });
 
 app.get("/services/:id/installations/new", async (req, res) => {
@@ -147,14 +151,6 @@ app.post("/services/:id/installations", async (req, res) => {
   res.redirect(`/services/${service.id}`);
 });
 
-function add(option){
-  const option = new ExInstallation({ ...req.body.option });
-  service.exInstallations.push(option);
-  option.service = service;
-  await service.save();
-  await option.save();
-  res.redirect(`/services/${service.id}`);
-}
 // // Create Default Service Options
 // app.get("/services/:id/new_d_varaint", async (req, res) => {
 //   const service = await Service.findById(req.params.id);
