@@ -24,7 +24,8 @@ const serviceSchema = new Schema({
   },
   method: {
     type: String,
-    enum: ["ac installations", "ac cleaning"],
+    enum: ["ac installation", "ac cleaning"],
+    required: true,
   },
   choices: [
     {

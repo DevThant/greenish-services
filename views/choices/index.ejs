@@ -1,9 +1,31 @@
 <% layout("layouts/boilerplate.ejs") %>
 
-<h1>Choices</h1>
-
-<% if(service.category === "hvac") {%>
-<a href="/services/<%= service.id %>/installations">
-  I'd like to choose the AC myself.
-</a>
+<h1>Choose one service</h1>
+<% if(service.method === "ac installation") {%>
+<h3>Or</h3>
+<a class="btn btn-primary" href="/services/<%= service.id %>/installations"
+  >Customize My Own AC</a
+>
 <% } %>
+<a class="btn btn-primary" href="/services">Back</a>
+
+<div class="row">
+  <div class="col-md-6 offset-3">
+    <% for(let choice of choices){ %>
+    <div class="card">
+      <h3 class="card-title"><%= choice.name %></h3>
+      <div class="card-body">
+        <p class="card-text">
+          <%= choice.type %> <span><%= choice.plan %> </span>
+        </p>
+        <p class="card-text"><%= choice.description %></p>
+        <p class="card-text"><%= choice.price %> MMK</p>
+        <p class="card-text"><%= choice.brand %></p>
+        <p class="card-text"><%= choice.model %></p>
+        <p class="card-text"><%= choice.hp %></p>
+      </div>
+      <a href="#" class="btn btn-primary">Request</a>
+    </div>
+    <% } %>
+  </div>
+</div>

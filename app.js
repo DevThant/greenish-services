@@ -137,7 +137,7 @@ app.post("/services/:id/choices", async (req, res) => {
   choice.service = service;
   await service.save();
   await choice.save();
-  res.redirect(`/services/${service.id}`);
+  res.redirect(`/services/${service.id}/choices`);
 });
 
 app.post("/services/:id/installations", async (req, res) => {
@@ -148,13 +148,9 @@ app.post("/services/:id/installations", async (req, res) => {
   option.service = service;
   await service.save();
   await option.save();
-  res.redirect(`/services/${service.id}`);
+  res.redirect(`/services/${service.id}/installations`);
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 311ddbfa2ea4b4a81b50f519a4c5d3d239f10f3b
 // // Create Default Service Options
 // app.get("/services/:id/new_d_varaint", async (req, res) => {
 //   const service = await Service.findById(req.params.id);
