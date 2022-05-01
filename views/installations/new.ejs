@@ -1,0 +1,91 @@
+<% layout('layouts/boilerplate') %>
+<!-- prettier-ignore-start -->
+<% if(service.method === "ac installation"){%>
+<div class="row">
+  <h1 class="text-center">Add new option to AC installation</h1>
+  <div class="col-6 offset-3">
+    <form
+      action="/services/<%= service.id %>/installations"
+      method="post"
+      class="g-3 needs-validation"
+      novalidate
+    >
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="option[name]"
+          required
+        />
+        <div class="invalid-feedback">
+          Please provide a name for the option.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="price">MMK</span>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            name="option[price]"
+            required
+          />
+          <div class="invalid-feedback">Please state the price.</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">option Description</label>
+        <textarea
+          class="form-control"
+          name="option[description]"
+          id="description"
+          cols="10"
+          rows="3"
+          required
+        ></textarea>
+        <div class="invalid-feedback">
+          Please provide a description of the option.
+        </div>
+        <div class="valid-feedback">&orarr;</div>
+      </div>
+      <div class="mb-3">
+        <label for="brand" class="form-label">Brand Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="brand"
+          name="option[brand]"
+          required
+        />
+        <div class="invalid-feedback">
+          Please provide a brand name for the AC
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="model" class="form-label">Choose AC Model</label>
+        <select class="form-select" name="option[model]" id="model">
+          <% for (let c of catModel) {%>
+          <option value="<%= c %>"><%= c %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="hp" class="form-label">Choose AC Hp </label>
+        <select class="form-select" name="option[hp]" id="hp">
+          <% for (let c of catHp) {%>
+          <option value="<%= c %>"><%= c %></option>
+          <% } %>
+        </select>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success" type="submit">Create option</button>
+      </div>
+    </form>
+    <a class="btn btn-primary" href="/options">Cancel</a>
+  </div>
+</div>
+<% } %>

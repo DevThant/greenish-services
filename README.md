@@ -113,13 +113,126 @@ This app provides users with the services of Greenish Engineering Co., Ltd.
 
 ```json
 
-
 Service:{
-  name: "Installation"
-  description: "",
-  basePrice: 1000
+  group: {
+    type: String,
+    enum: ["hvac", "solar"],
+    required: true,
+  }
+  stype:{
+    type: String,
+    enum: ["Installtion", "Cleaning", "Maintenence", "Survey"],
+    required: true,
+  }
+  hvac:[{
+    types: mongoose.Schema.Types.ObjectId,
+    ref : "Hvac"
+  }],
+  solar:[{
+    types: mongoose.Schema.Types.ObjectId,
+    ref : "Solar"
+  }],
+}
+
+Hvac:{
+  installtion:[{
+    types: mongoose.Schema.Types.ObjectId,
+    ref : "Installation"
+  }],
+  cleaning:[{
+    types: mongoose.Schema.Types.ObjectId,
+    ref : "cleaning"
+  }],
+  maintenance:[{
+    types: mongoose.Schema.Types.ObjectId,
+    ref : "maintenance"
+  }],
+  survey:[{
+    types: mongoose.Schema.Types.ObjectId,
+    ref : "survey"
+  }],
 }
 
 
+Service:{
+  stype:{
+    type: String,
+    enum: ["Installtion", "Cleaning", "Maintenence", "Survey"],
+    required: true,
+  }
+  group: {
+    type: String,
+    enum: ["hvac", "solar", "electrical", "grounding", "plumbing"],
+    required: true,
+  }
+  description: "",
+  basePrice: 1000,
+  installtion:[{
+    types: mongoose.Schema.Types.ObjectId,
+    ref : "Installation"
+  }],
+  cleaning:[{
+    types: mongoose.Schema.Types.ObjectId,
+    ref : "cleaning"
+  }],
+  maintenance:[{
+    types: mongoose.Schema.Types.ObjectId,
+    ref : "maintenance"
+  }],
+  survey:[{
+    types: mongoose.Schema.Types.ObjectId,
+    ref : "survey"
+  }],
 
+}
+
+
+Installation{
+  obj: {
+    type: String,
+    enum: ["ac", "solar"]
+    required: true,
+  }
+   service: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Service"
+  }
+}
+
+  // Mutual
+  name: {
+    type: String,
+    required: true,
+  },
+  brand:{
+    type: String,
+    required: true,
+  },
+   price: {
+    type: Number,
+    min: 0,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  isDefault: {
+    type: boolean,
+    default: false,
+    required: true,
+
+  }
+
+  // for ac
+  model: {
+    type: String,
+    enum: ["Inverter", "Non-Inverter"],
+    required: function(){return this.obj === "ac";}
+  },
+  hp: {
+    type: Number,
+    enum: [1, 1.5, 2, 2.5, 3, 3.5],
+    required: function(){return this.obj === "ac";}
+  },
 ```

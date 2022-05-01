@@ -1,6 +1,23 @@
 <% layout("layouts/boilerplate") %>
 
 <h1>Choosing Custom AC for Installation</h1>
-<a class="btn btn-primary" href="/services/<%= service.id %>/choices"
+<a class="btn btn-primary" href="/services/<%= service.id %>/options"
   >Back to default installtions</a
 >
+<div class="row">
+  <div class="col-md-6 offset-3">
+    <% for(let option of options){ %>
+    <div class="card">
+      <h3 class="card-title"><%= option.name %></h3>
+      <div class="card-body">
+        <p class="card-text"><%= option.description %></p>
+        <p class="card-text">Price:<%= option.price %> MMK</p>
+        <p class="card-text">Brand:<%= option.brand %></p>
+        <p class="card-text">Model:<%= option.model %></p>
+        <p class="card-text">Horsepower: <%= option.hp %></p>
+      </div>
+      <a href="#" class="btn btn-primary">Request</a>
+    </div>
+    <% } %>
+  </div>
+</div>

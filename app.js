@@ -126,7 +126,7 @@ app.get("/services/:id/choices/new", async (req, res) => {
 
 app.get("/services/:id/installations/new", async (req, res) => {
   const service = await Service.findById(req.params.id);
-  res.render("installation/new", { service });
+  res.render("installations/new", { service, catModel, catHp });
 });
 
 app.post("/services/:id/choices", async (req, res) => {
